@@ -1,3 +1,8 @@
+<style>
+  .right {
+    float: right;
+  }
+  </style>
 <header>
   <nav class="navbar navbar-expand-md navbar-dark bg-success">
     <a class="navbar-brand" href="/urls">TinyApp</a>
@@ -8,7 +13,23 @@
       <div class="navbar-nav">
         <a class="nav-item nav-link" href="/urls">My URLs</a>
         <a class="nav-item nav-link" href="/urls/new">Create New URL</a>
+
+      </div>  
+      <div class="ml-auto">
+        <% if (username) { %>
+          <form class="form-inline my-2 my-lg-0" action="/logout" method="POST">
+            <label for="logout">Logged In As: <%= username %>! &nbsp</label>
+            <button type="logout" class="btn-primary" style="background-color: red;">Logout</button>
+          </form>
+        <% } else if(!username) {%>
+          <form class="form-inline my-2 my-lg-0" action="/login" method="POST">
+            <label for="username">Please Enter Username:</label>
+            <input type="text" name="username" style="width: 300; margin: 1em;">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+       <% } %>
       </div>
     </div>
+
   </nav>
 </header>
