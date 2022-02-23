@@ -11,19 +11,18 @@
 
       </div>  
       <div class="ml-auto">
-        <% if (username) { %>
+        <% if (user['user_id']) { %>
           <form class="form-inline my-2 my-lg-0" action="/logout" method="POST">
-            <label for="logout">Logged In As: <%= username %>! &nbsp</label>
+            <label for="logout">Logged In As: <%= user['user_id'].email %>! &nbsp</label>
             <button type="logout" class="btn-primary" style="background-color: red;">Logout</button>
           </form>
-        <% } else if(!username) {%>
-          <form class="form-inline my-2 my-lg-0" action="/login" method="POST">
-            <label for="username">Please Enter Username:</label>
-            <input type="text" name="username" style="width: 300; margin: 1em;">
-            <button type="submit" class="btn btn-primary">Submit</button>
+        <% } else if(!user['user_id']) {%>
+          <form style="float: left;" action="/registration" method="Get">
+            <input type="submit" value="Register"> &ensp;</form>  
+          <form style="float: left;" action="/login" method="Get">
+            <input type="submit" value="Login">
           </form>
-       <% } %>
-      </div>
+      <% } %>
     </div>
 
   </nav>
