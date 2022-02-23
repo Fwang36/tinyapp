@@ -24,6 +24,11 @@ app.get("/", (req, res) => {
   res.redirect("/urls");
 });
 
+app.get("/registration", (req,res) => {
+  const templateVars = {username: req.cookies['username']}
+  res.render("urls_registration", templateVars)
+})
+
 
 app.get("/urls.json", (req, res) => {
   res.json(urlDatabase);
