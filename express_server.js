@@ -32,6 +32,27 @@ app.get("/login", (req, res) => {
   res.render("urls_login", templateVars)
 })
 
+app.post("/login", (req, res) => {
+  const templateVars = {user: {
+    user_id: users[req.cookies['user_id']],
+    users: users
+    }
+  }
+  for (key in users) {
+  if (findEmail(req.body.email)) {
+    if (users[key].password === req.body.password) {
+      res.cookie("user_id", users[key].id)
+      res.redirect("/urls")
+
+    } else {
+      return res.sendStatus(403)
+    }
+  } else {
+   return res.sendStatus(403)
+  }
+  }
+})
+
 app.get("/", (req, res) => {
   res.redirect("/urls");
 });
@@ -92,8 +113,7 @@ app.post("/urls/:shortURL", (req, res) => {
 
 app.post("/urls", (req, res) => {
   let short = generateRandomString()
-  urlDatabase[short] = req.body.longURL
-  console.log(req.body);  // Log the POST request body to the console
+  urlDatabase[short] = req.body.longURL  // Log the POST request body to the console
   res.redirect(`/urls/${short}`);         // Respond with 'Ok' (we will replace this)
 });
 
@@ -118,7 +138,6 @@ app.get("/urls", (req, res) => {
   }
   }  
   res.render("urls_index", templateVars);
-  console.log(users)
 });
 
 app.post("/logout", (req, res) => {
@@ -140,7 +159,7 @@ function generateRandomString() {
 const findEmail = function(email) {
   for (key in users) {
     if (users[key].email === email) {
-      return true
+      return users[key].email
     }
   }
   return false
