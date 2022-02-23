@@ -10,18 +10,18 @@
 
   <body>
     <%- include('partials/_header') %>
-    <h1>&ensp;Create New Account</h1>
-    <div>
+    <h1 class="ml-3">Create New Account</h1>
+    <div class="ml-4">
       <br>
       <form method="POST" action="/register">
-        <label for="email">&ensp;Email address</label>
-        <br>&ensp;<input type="email" name="email" placeholder="Enter email"><br>
+        <label for="email">Email address</label>
+        <br><input type="email" name="email" placeholder="Enter email"><br>
         <br>
-        <label for="password">&ensp;Password</label>
+        <label for="password">Password</label>
         <br>
-        &ensp;<input type="password" name="password" placeholder="Password"><br>
+        <input type="password" name="password" placeholder="Password"><br>
         <br>
-        &ensp;<button style="background-color: blue; color: white; border-color: blue; border-radius: 8px;">Register</button>
+        <button style="background-color: blue; color: white; border-color: blue; border-radius: 8px;">Register</button>
       </form>
     </div>
 
