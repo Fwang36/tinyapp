@@ -1,31 +1,31 @@
 const { assert } = require('chai');
 const res = require('express/lib/response');
 
-const { findEmail, urlsForUser} = require("../helpers.js")
+const { findEmail, urlsForUser} = require("../helpers.js");
 
 const testUsers = {
   "userRandomID": {
-    id: "userRandomID", 
-    email: "user@example.com", 
+    id: "userRandomID",
+    email: "user@example.com",
     password: "purple-monkey-dinosaur"
   },
   "user2RandomID": {
-    id: "user2RandomID", 
-    email: "user2@example.com", 
+    id: "user2RandomID",
+    email: "user2@example.com",
     password: "dishwasher-funk"
   }
 };
 
 describe('findEmail', function() {
   it('should return an email if an email is found', function() {
-    const email = findEmail("user@example.com", testUsers)
-    assert.equal(email, "user@example.com")
+    const email = findEmail("user@example.com", testUsers);
+    assert.equal(email, "user@example.com");
   });
 
   it('should return false if email not found', function() {
-    const result = findEmail("123@gmail.com", testUsers)
-    assert.equal(result, false)
-  })
+    const result = findEmail("123@gmail.com", testUsers);
+    assert.equal(result, false);
+  });
 });
 
 const testUrls = {
@@ -47,12 +47,12 @@ const testUrls = {
 
 describe('urlsForUser', () => {
   it('should return of longURL of inputted user', () => {
-    const result = urlsForUser("2evgrs", testUrls)
-    assert.equal(result["b6UTxQ"], "https://www.tsn.ca")
-  }) 
+    const result = urlsForUser("2evgrs", testUrls);
+    assert.equal(result["b6UTxQ"], "https://www.tsn.ca");
+  });
 
   it('should not return urls of other user_ids', () => {
-    const result = urlsForUser("2evgrs", testUrls)
-    assert.equal(result["32jdiw"], undefined)
-  })
-})
+    const result = urlsForUser("2evgrs", testUrls);
+    assert.equal(result["32jdiw"], undefined);
+  });
+});
