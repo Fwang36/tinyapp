@@ -11,9 +11,11 @@
 <%- include('partials/_header') %>
 <body>
   <main style="margin: 1em;">
-    <h3>My URLs</h3>
+    
     <table class="table">
       <thead>
+        <% if (user['user_id']) {%>
+          <h3>My URLs</h3>
         <tr>
           <th scope="col">Short URL</th>
           <th scope="col">Long URL</th>
@@ -38,6 +40,10 @@
         <% } %>
       </tbody>
     </table>
+<% } else { %>
+  <br>  
+  <h2>Please Create An Account Or Login To View Links</h2>
+<% } %>
   </main>
   <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
